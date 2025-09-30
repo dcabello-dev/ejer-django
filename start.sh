@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Apply database migrations
-python manage.py migrate
+#python manage.py migrate
 
 # Collect static files (if applicable)
 #python manage.py collectstatic --noinput
