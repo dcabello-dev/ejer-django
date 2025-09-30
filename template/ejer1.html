@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+</head>
+<body>
+    <h1>Ejercicios</h1>
+
+    <!-- Ejercicio 1 -->
+    <h2>Convertir texto a mayúsculas</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="ejercicio1" value="1">
+        <label for="texto">Ingresa tu texto:</label><br>
+        <input type="text" id="texto" name="texto"><br><br>
+        <input type="submit" value="Convertir a Mayúsculas">
+    </form>
+
+    {% if resultado1 %}
+        <h3>Resultado Ejercicio 1:</h3>
+        <p>{{ resultado1 }}</p>
+    {% endif %}
+
+    <hr>
+
+    <!-- Ejercicio 2 -->
+    <h2>Contador de palabras</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="ejercicio2" value="2">
+        <label for="texto2">Ingresa tu texto:</label><br>
+        <textarea id="texto2" name="texto2" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Contar Palabras">
+    </form>
+
+    {% if resultado2 %}
+        <h3>Resultado Ejercicio 2:</h3>
+        <p>{{ resultado2 }}</p>
+    {% endif %}
+
+</body>
+</html>
