@@ -25,7 +25,7 @@ def ejercicios(request):
             palabras = texto.split()
             resultado2 = f"El texto tiene {len(palabras)} palabras."
 
-    return render(request, 'ejer1.html', {
+    return render(request, 'ejer1b.html', {
         'resultado1': resultado1,
         'resultado2': resultado2
     })
