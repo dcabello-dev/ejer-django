@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-jn6ouk9e&hhpog8cdec--tp$72pe%c^vh5n*dmtenxm3vxl!e&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['dcabello.up.railway.app']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
