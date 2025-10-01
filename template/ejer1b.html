@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Procesamiento de Texto</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbc;
+            --accent-color: #ff7e5f;
+            --light-color: #f5f7fa;
+            --dark-color: #333;
+            --success-color: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .exercises-container {
+            padding: 20px;
+        }
+
+        .exercise {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .exercise:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .exercise-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        input[type="text"], textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--success-color);
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h3 {
+            color: var(--success-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .result-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #eee;
+            margin: 30px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            header {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .exercise {
+                padding: 15px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ejercicios de Procesamiento de Texto</h1>
+            <p class="subtitle">Herramientas útiles para trabajar con texto</p>
+        </header>
+
+        <div class="exercises-container">
+            <!-- Ejercicio 1 -->
+            <div class="exercise">
+                <h2><i class="fas fa-text-height"></i> Convertir texto a mayúsculas</h2>
+                <p class="exercise-description">Ingresa cualquier texto en el campo a continuación y conviértelo automáticamente a mayúsculas.</p>
+                
+                <form id="form1">
+                    <label for="texto">Ingresa tu texto:</label>
+                    <input type="text" id="texto" name="texto" placeholder="Escribe aquí tu texto...">
+                    <button type="submit" class="btn"><i class="fas fa-arrow-up"></i> Convertir a Mayúsculas</button>
+                </form>
+
+                <div class="result" id="result1">
+                    <h3>Resultado:</h3>
+                    <p class="result-text" id="resultado1"></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Ejercicio 2 -->
+            <div class="exercise">
+                <h2><i class="fas fa-calculator"></i> Contador de palabras</h2>
+                <p class="exercise-description">Ingresa un texto para contar automáticamente el número de palabras que contiene.</p>
+                
+                <form id="form2">
+                    <label for="texto2">Ingresa tu texto:</label>
+                    <textarea id="texto2" name="texto2" placeholder="Escribe aquí tu texto..."></textarea>
+                    <button type="submit" class="btn"><i class="fas fa-calculator"></i> Contar Palabras</button>
+                </form>
+
+                <div class="result" id="result2">
+                    <h3>Resultado:</h3>
+                    <p class="result-text" id="resultado2"></p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Ejercicios de procesamiento de texto &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // Ejercicio 1: Convertir texto a mayúsculas
+        document.getElementById('form1').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const texto = document.getElementById('texto').value;
+            const resultado = texto.toUpperCase();
+            
+            document.getElementById('resultado1').textContent = resultado;
+            document.getElementById('result1').classList.add('show');
+        });
+
+        // Ejercicio 2: Contador de palabras
+        document.getElementById('form2').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const texto = document.getElementById('texto2').value.trim();
+            let cantidadPalabras = 0;
+            
+            if (texto !== '') {
+                // Eliminar espacios extra y dividir por espacios
+                const palabras = texto.split(/\s+/);
+                cantidadPalabras = palabras.length;
+            }
+            
+            document.getElementById('resultado2').textContent = `El texto contiene ${cantidadPalabras} palabra${cantidadPalabras !== 1 ? 's' : ''}.`;
+            document.getElementById('result2').classList.add('show');
+        });
+
+        // Mostrar ejemplos al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('texto').placeholder = "Ejemplo: Hola mundo";
+            document.getElementById('texto2').placeholder = "Ejemplo: Este es un texto de ejemplo para contar palabras";
+        });
+    </script>
+</body>
+</html>
